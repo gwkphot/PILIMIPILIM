@@ -94,7 +94,7 @@ HERO
     font-weight:800;
     font-size:clamp(70px,7vw,150px);
     line-height:.82;
-    letter-spacing:-.038em;
+    letter-spacing:-038em;
     color:#1A1A1A;
     text-align:center;
 }
@@ -110,7 +110,7 @@ HERO — MOBILE
         margin:0 auto;
         left:-0.08em;
         font-size:58px;
-        letter-spacing:-.38em;
+        letter-spacing:-38em;
         text-align:center;
     }
 
