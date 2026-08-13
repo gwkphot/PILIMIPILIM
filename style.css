@@ -961,7 +961,7 @@ JAMS — SMALL MOBILE
     font-size:clamp(30px,2.45vw,46px);
     line-height:1.12;
     letter-spacing:-.035em;
-    width:100%;
+    width:82%;
     margin:0;
     color:#D9D9D9;
 }
@@ -977,6 +977,7 @@ MEETINGS — TABLET
     }
 
     .meetings-block p{
+        width:100%;
         font-size:clamp(28px,3.2vw,38px);
     }
 
@@ -993,6 +994,7 @@ MEETINGS — MOBILE
     }
 
     .meetings-block p{
+        width:100%;
         font-size:24px;
         line-height:1.15;
     }
@@ -1010,6 +1012,7 @@ MEETINGS — SMALL MOBILE
     }
 
     .meetings-block p{
+        width:100%;
         font-size:22px;
     }
 
