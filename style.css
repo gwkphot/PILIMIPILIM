@@ -89,12 +89,12 @@ HERO
     margin:0 auto;
     padding:0;
     position:relative;
-    left:-0.08em;
+    left:-0.16em;
     font-family:'Montserrat',sans-serif;
     font-weight:800;
     font-size:clamp(70px,7vw,150px);
     line-height:.82;
-    letter-spacing:-038em;
+    letter-spacing:-.07em;
     color:#1A1A1A;
     text-align:center;
 }
@@ -108,9 +108,9 @@ HERO — MOBILE
     .hero-title{
         width:fit-content;
         margin:0 auto;
-        left:-0.08em;
+        left:-0.16em;
         font-size:58px;
-        letter-spacing:-38em;
+        letter-spacing:-.06em;
         text-align:center;
     }
 
