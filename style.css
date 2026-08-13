@@ -546,25 +546,23 @@ MOBILE CARDS
         height:50vh;
         width:100%;
         order:2;
-        padding:26px 10px 18px;
-        justify-content:flex-start;
+        padding:14px;
+        justify-content:space-between;
         align-items:flex-start;
     }
 
+    .text h2{
+        font-size:34px;
+        line-height:.92;
+        letter-spacing:-.055em;
+    }
+
     .text p{
-        font-size:25px;
+        font-size:24px;
         line-height:1.15;
         letter-spacing:-.03em;
     }
 
-}
-
-/* =========================================================
-CARDS — REVEAL
-========================================================= */
-
-.card-block .text p{
-    will-change:transform,opacity,filter;
 }
 
 /* =========================================================
@@ -574,15 +572,33 @@ SMALL MOBILE
 @media(max-width:480px){
 
     .text{
-        padding:24px 8px 14px;
+        padding:14px;
+    }
+
+    .text h2{
+        font-size:30px;
     }
 
     .text p{
-        font-size:23px;
+        font-size:22px;
         line-height:1.15;
     }
 
 }
+
+
+
+/* =========================================================
+CARDS — REVEAL
+========================================================= */
+
+.card-block .text p{
+    will-change:transform,opacity,filter;
+}
+
+
+
+
 /* =========================================================
 FIXED LOGO
 ========================================================= */
