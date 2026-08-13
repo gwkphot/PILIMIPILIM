@@ -449,7 +449,7 @@ GALLERY
 
 function initGallery(){
 
-    const images=[
+    const images = [
         "1.webp",
         "2.webp",
         "3.webp",
@@ -460,82 +460,115 @@ function initGallery(){
         "8.webp"
     ];
 
-    const image=document.getElementById("gallery-image");
-    const mobile=document.getElementById("gallery-mobile");
-    const next=document.getElementById("gallery-next");
-    const prev=document.getElementById("gallery-prev");
+    const image = document.getElementById("gallery-image");
+    const mobile = document.getElementById("gallery-mobile");
+    const next = document.getElementById("gallery-next");
+    const prev = document.getElementById("gallery-prev");
 
     if(!image || !mobile) return;
-
     if(image.dataset.galleryInitialized) return;
 
-    image.dataset.galleryInitialized="true";
+    image.dataset.galleryInitialized = "true";
 
-    let index=0;
-    let swapTimer=null;
+    let index = 0;
+    let loading = false;
 
-    function changeGallery(nextIndex){
+    /* =====================================================
+       PRELOAD
+    ===================================================== */
 
-        index=
-            (nextIndex+images.length)%
-            images.length;
+    const preload = new Set();
 
-        const file=images[index];
+    function preloadImage(i){
 
-        clearTimeout(swapTimer);
+        i = (i + images.length) % images.length;
 
-        image.style.opacity="0";
+        if(preload.has(i)) return;
 
-        swapTimer=setTimeout(()=>{
+        preload.add(i);
 
-            mobile.srcset=
-                `images/gallery/mobile/${file}`;
+        const img = new Image();
 
-            const reveal=()=>{
+        img.src = `images/gallery/${images[i]}`;
 
-                image.style.opacity="1";
+        const mobileImg = new Image();
 
-                image.removeEventListener(
-                    "load",
-                    reveal
-                );
-
-            };
-
-            image.addEventListener(
-                "load",
-                reveal
-            );
-
-            image.src=
-                `images/gallery/${file}`;
-
-            if(image.complete){
-
-                requestAnimationFrame(()=>{
-                    image.style.opacity="1";
-                });
-
-            }
-
-        },300);
+        mobileImg.src =
+            `images/gallery/mobile/${images[i]}`;
 
     }
 
-    next?.addEventListener("click",()=>{
+    /* Загружаем первую пару следующих изображений */
+    preloadImage(1);
+    preloadImage(2);
+    preloadImage(images.length - 1);
 
-        changeGallery(index+1);
+    /* =====================================================
+       CHANGE IMAGE
+    ===================================================== */
 
+    function changeGallery(nextIndex){
+
+        if(loading) return;
+
+        index =
+            (nextIndex + images.length) %
+            images.length;
+
+        const file = images[index];
+
+        loading = true;
+
+        image.style.opacity = "0";
+
+        mobile.srcset =
+            `images/gallery/mobile/${file}`;
+
+        const newImage = new Image();
+
+        newImage.onload = () => {
+
+            image.src =
+                `images/gallery/${file}`;
+
+            requestAnimationFrame(() => {
+
+                image.style.opacity = "1";
+                loading = false;
+
+            });
+
+        };
+
+        newImage.onerror = () => {
+
+            image.style.opacity = "1";
+            loading = false;
+
+        };
+
+        newImage.src =
+            `images/gallery/${file}`;
+
+        /* Подгружаем соседние фотографии */
+        preloadImage(index + 1);
+        preloadImage(index - 1);
+
+    }
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    next?.addEventListener("click", () => {
+        changeGallery(index + 1);
     });
 
-    prev?.addEventListener("click",()=>{
-
-        changeGallery(index-1);
-
+    prev?.addEventListener("click", () => {
+        changeGallery(index - 1);
     });
 
 }
-
 
 /* =========================================================
 MOBILE CONTACT LOGO
