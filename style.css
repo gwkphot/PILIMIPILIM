@@ -88,8 +88,6 @@ HERO
     width:fit-content;
     margin:0 auto;
     padding:0;
-    position:relative;
-    left:-0.16em;
     font-family:'Montserrat',sans-serif;
     font-weight:800;
     font-size:clamp(70px,7vw,150px);
@@ -108,14 +106,12 @@ HERO — MOBILE
     .hero-title{
         width:fit-content;
         margin:0 auto;
-        left:-0.16em;
         font-size:58px;
         letter-spacing:-.06em;
         text-align:center;
     }
 
 }
-
 
 /* =========================================================
 MANIFEST
@@ -229,6 +225,77 @@ SMALL MOBILE
         font-size:40px;
         line-height:.88;
         letter-spacing:-0.065em;
+    }
+
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media(max-width:1024px){
+
+    .manifest-block{
+        padding:8px 14px 14px;
+    }
+
+    .manifest-content h1{
+        font-size:clamp(50px,6vw,72px);
+    }
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+    .manifest-block{
+        min-height:auto;
+        padding:12px 12px 20px;
+    }
+
+    .manifest-content{
+        height:auto;
+    }
+
+    .manifest-content h1{
+        width:100%;
+        font-size:clamp(44px,11.5vw,62px);
+        line-height:.95;
+        letter-spacing:-.07em;
+    }
+
+    .manifest-desktop{
+        display:none;
+    }
+
+    .manifest-mobile{
+        display:block;
+    }
+
+    .manifest-mobile .line:first-child{
+        position:relative;
+        top:2px;
+    }
+
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+    .manifest-block{
+        padding:10px 10px 18px;
+    }
+
+    .manifest-content h1{
+        font-size:40px;
+        line-height:.88;
+        letter-spacing:-.065em;
     }
 
 }
@@ -399,26 +466,19 @@ TEXT
 
 .text{
     background:#d9d9d9;
-    padding:24px 28px 28px;
+    padding:32px 28px 28px;
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
+    justify-content:flex-start;
     align-items:flex-start;
 }
 
 /* =========================================================
-TITLE
+TITLE — HIDDEN
 ========================================================= */
 
 .text h2{
-    font-family:'Inter',sans-serif;
-    font-weight:700;
-    font-size:clamp(42px,3.2vw,60px);
-    line-height:.95;
-    letter-spacing:-.045em;
-    color:#333333;
-    margin:0;
-    max-width:700px;
+    display:none;
 }
 
 /* =========================================================
@@ -428,7 +488,7 @@ TEXT DESCRIPTION
 .text p{
     font-family:'Inter',sans-serif;
     font-weight:500;
-    font-size:clamp(28px,2.1vw,40px);
+    font-size:clamp(30px,2.2vw,42px);
     line-height:1.12;
     letter-spacing:-.035em;
     color:#333333;
@@ -443,15 +503,11 @@ TABLET
 @media(max-width:1024px){
 
     .text{
-        padding:50px;
-    }
-
-    .text h2{
-        font-size:48px;
+        padding:40px 28px 28px;
     }
 
     .text p{
-        font-size:24px;
+        font-size:28px;
     }
 
     .symbol img{
@@ -487,23 +543,25 @@ MOBILE CARDS
         height:50vh;
         width:100%;
         order:2;
-        padding:18px 10px;
-        justify-content:space-between;
+        padding:26px 10px 18px;
+        justify-content:flex-start;
         align-items:flex-start;
     }
 
-    .text h2{
-        font-size:34px;
-        line-height:.92;
-        letter-spacing:-.055em;
-    }
-
     .text p{
-        font-size:24px;
+        font-size:25px;
         line-height:1.15;
         letter-spacing:-.03em;
     }
 
+}
+
+/* =========================================================
+CARDS — REVEAL
+========================================================= */
+
+.card-block .text p{
+    will-change:transform,opacity,filter;
 }
 
 /* =========================================================
@@ -513,20 +571,15 @@ SMALL MOBILE
 @media(max-width:480px){
 
     .text{
-        padding:14px 8px;
-    }
-
-    .text h2{
-        font-size:30px;
+        padding:24px 8px 14px;
     }
 
     .text p{
-        font-size:22px;
+        font-size:23px;
         line-height:1.15;
     }
 
 }
-
 /* =========================================================
 FIXED LOGO
 ========================================================= */
@@ -850,6 +903,7 @@ JAMS — SMALL MOBILE
     }
 
 }
+
 /* =========================================================
 ОСТОРОЖНО! — ОГРАНИЧЕНИЕ ШИРИНЫ ТЕКСТА
 ========================================================= */
@@ -867,8 +921,6 @@ JAMS — SMALL MOBILE
     }
 
 }
-
-
 
 /* =========================================================
 РАСПИСАНИЕ
